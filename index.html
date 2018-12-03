@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+    <!-- Necessarily Declarations -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="alternate icon" type="image/png" href="./favicon.png">
+    <!-- Loading Style -->
+    <link rel="stylesheet" href="https://fonts.geekzu.org/css?family=Roboto:300,300i,400,400i,500,500i,700,700i">
+    <link rel="stylesheet" href="https://static.1cf.co/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="https://static.1cf.co/fonts/MDI-WXSS/MDI.css">
+    <link rel="stylesheet" href="./static/css/animate.min.css">
+    <style>
+        ::-moz-selection {
+            background: #b3d4fc;
+            text-shadow: none
+        }
+
+        ::selection {
+            background: #b3d4fc;
+            text-shadow: none
+        }
+
+        body {
+            background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        }
+
+        .container {
+            min-height: 100vh;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Calculator */
+
+        calculator {
+            display: block;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 30px;
+            border-radius: 4px;
+            transition: .2s ease-out .0s;
+            color: #7a8e97;
+            background: #f1f3f4;
+            /* padding: 1rem; */
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            /* margin-bottom: 2rem; */
+            max-width: 100%;
+            width: 25rem;
+            overflow: hidden;
+        }
+
+        calculator:hover {
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 40px;
+        }
+
+        calculator>screen {
+            display: block;
+            padding: 1rem;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 30px;
+            background: #fff;
+        }
+
+        calculator raw {
+            display: block;
+            text-align: right;
+        }
+
+        calculator ans {
+            display: block;
+            text-align: right;
+            font-size: 4rem;
+            line-height: 6rem;
+        }
+
+        calculator>panel {
+            display: flex;
+        }
+
+        calculator dial {
+            display: flex;
+            width: 75%;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+
+        }
+
+        calculator action {
+            display: flex;
+            width: 25%;
+            border-left: 1px solid rgba(0, 0, 0, 0.15);
+            flex-direction: column;
+        }
+
+        calculator dial button {
+            margin: 0 !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            position: relative;
+            display: block;
+            width: calc(100% / 3);
+        }
+
+        calculator dial button div {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #1e1e20;
+        }
+
+        calculator dial button:before {
+            content: " ";
+            display: block;
+            padding-top: 100%;
+        }
+
+        calculator action button {
+            margin: 0 !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            position: relative;
+            display: block;
+            width: 100%;
+            flex-grow: 1;
+        }
+
+        calculator action button div {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #1973e8;
+        }
+
+        .MDI.multiplication:before {
+            content: "\e795";
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <calculator class="animated zoomIn">
+            <screen>
+                <raw>
+                    0
+                </raw>
+                <ans>
+                    0
+                </ans>
+            </screen>
+            <panel>
+                <dial>
+                    <button class="btn btn-secondary">
+                        <div>
+                            7
+                        </div>
+                    </button>
+                    <button class="btn btn-secondary">
+                        <div>
+                            8
+                        </div>
+                    </button>
+                    <button class="btn btn-secondary">
+                        <div>
+                            9
+                        </div>
+                    </button>
+                    <button class="btn btn-secondary">
+                        <div>
+                            4
+                        </div>
+                    </button>
+                    <button class="btn btn-secondary">
+                        <div>
+                            5
+                        </div>
+                    </button>
+                    <button class="btn btn-secondary">
+                        <div>
+                            6
+                        </div>
+                    </button>
+                    <button class="btn btn-secondary">
+                        <div>
+                            1
+                        </div>
+                    </button>
+                    <button class="btn btn-secondary">
+                        <div>
+                            2
+                        </div>
+                    </button>
+                    <button class="btn btn-secondary">
+                        <div>
+                            3
+                        </div>
+                    </button>
+                    <button class="btn btn-secondary">
+                        <div>
+                            0
+                        </div>
+                    </button>
+                    <button class="btn btn-secondary">
+                        <div>
+                            .
+                        </div>
+                    </button>
+                    <button class="btn btn-secondary">
+                        <div>
+                            =
+                        </div>
+                    </button>
+                </dial>
+                <action>
+                    <button class="btn btn-info">
+                        <div>
+                            <i class="MDI backspace"></i>
+                        </div>
+                    </button>
+                    <button class="btn btn-info">
+                        <div>
+                            <i class="MDI division"></i>
+                        </div>
+                    </button>
+                    <button class="btn btn-info">
+                        <div>
+                            <i class="MDI multiplication"></i>
+                        </div>
+                    </button>
+                    <button class="btn btn-info">
+                        <div>
+                            <i class="MDI minus"></i>
+                        </div>
+                    </button>
+                    <button class="btn btn-info">
+                        <div>
+                            <i class="MDI plus"></i>
+                        </div>
+                    </button>
+                </action>
+            </panel>
+        </calculator>
+    </div>
+    <script src="https://static.1cf.co/js/jquery-3.2.1.min.js"></script>
+    <script src="https://static.1cf.co/js/popper.min.js"></script>
+    <script src="https://static.1cf.co/js/snackbar.min.js"></script>
+    <script src="https://static.1cf.co/js/bootstrap-material-design.js"></script>
+    <script>
+        var rawStr = "0";
+
+        function modSize(length) {
+            if (length <= 10) {
+                $("ans").css("font-size", "4rem");
+            } else if (length > 25) {
+                rawStr = rawStr.substr(0, 25);
+                $("ans").css("font-size", "1.6rem");
+            } else {
+                $("ans").css("font-size", 40 / length + "rem");
+            }
+            $("ans").html(rawStr);
+        }
+
+        function addStr(temp) {
+            if (rawStr == "0") {
+                rawStr = "";
+            }
+            rawStr += temp;
+            modSize(rawStr.length);
+        }
+
+        function delStr() {
+            rawStr = rawStr.substr(0, rawStr.length - 1);
+            if (rawStr.length == 0) {
+                rawStr = "0";
+            }
+            modSize(rawStr.length);
+        }
+
+        function calcAns() {
+            $.post("./core/calc.php", {
+                raw: rawStr
+            }, function (result) {
+                rawStr = "0";
+                result = JSON.parse(result);
+                if (result.ret == 200) {
+                    $("raw").html(result.data.raw);
+                    $("ans").html(result.data.ans);
+                } else {
+                    $("raw").html(result.data.raw);
+                    $("ans").html(result.desc);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $('body').bootstrapMaterialDesign();
+            $("button").bind("click", function () {
+                var action = $.trim($(this).children("div").html());
+                if ($(this).find("div i").prop("className")) {
+                    action = $(this).find("div i").prop("className").split(' ')[1];
+                }
+                console.log(action);
+                switch (action) {
+                    case "0":
+                        addStr(action);
+                        break;
+                    case "1":
+                        addStr(action);
+                        break;
+                    case "2":
+                        addStr(action);
+                        break;
+                    case "3":
+                        addStr(action);
+                        break;
+                    case "4":
+                        addStr(action);
+                        break;
+                    case "5":
+                        addStr(action);
+                        break;
+                    case "6":
+                        addStr(action);
+                        break;
+                    case "7":
+                        addStr(action);
+                        break;
+                    case "8":
+                        addStr(action);
+                        break;
+                    case "9":
+                        addStr(action);
+                        break;
+                    case ".":
+                        addStr(action);
+                        break;
+                    case "=":
+                        calcAns();
+                        break;
+                    case "backspace":
+                        delStr();
+                        break;
+                    case "division":
+                        addStr("/");
+                        break;
+                    case "multiplication":
+                        addStr("*");
+                        break;
+                    case "minus":
+                        addStr("-");
+                        break;
+                    case "plus":
+                        addStr("+");
+                        break;
+                }
+            });
+        });
+        window.addEventListener("load", function () {
+            console.log("successfully loaded");
+        }, false);
+    </script>
+</body>
+
+</html>
