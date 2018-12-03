@@ -300,15 +300,16 @@
             $.post("./core/calc.php", {
                 raw: rawStr
             }, function (result) {
-                rawStr = "0";
                 result = JSON.parse(result);
                 if (result.ret == 200) {
                     $("raw").html(result.data.raw);
-                    $("ans").html(result.data.ans);
+                    rawStr = String(result.data.ans);
+                    modSize(rawStr.length);
                 } else {
                     $("raw").html(result.data.raw);
                     $("ans").html(result.desc);
                 }
+                rawStr="0";
             });
         }
 
