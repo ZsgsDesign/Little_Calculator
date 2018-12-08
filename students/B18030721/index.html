@@ -154,11 +154,6 @@
         .MDI.multiplication:before {
             content: "\e795";
         }
-
-        .btn.btn-secondary:focus,
-        .btn.btn-info:focus {
-            background: transparent;
-        }
     </style>
 </head>
 
@@ -272,7 +267,6 @@
     <script src="https://static.1cf.co/js/bootstrap-material-design.js"></script>
     <script>
         var rawStr = "0";
-        var proc=false;
 
         function modSize(length) {
             if (length <= 10) {
@@ -303,10 +297,6 @@
         }
 
         function calcAns() {
-            if(proc)return;
-            proc=true;
-            $("ans").css("font-size", "4rem");
-            $("ans").html("计算中…");
             $.post("./core/calc.php", {
                 raw: rawStr
             }, function (result) {
@@ -319,8 +309,7 @@
                     $("raw").html(result.data.raw);
                     $("ans").html(result.desc);
                 }
-                rawStr = "0";
-                proc=false;
+                rawStr="0";
             });
         }
 
